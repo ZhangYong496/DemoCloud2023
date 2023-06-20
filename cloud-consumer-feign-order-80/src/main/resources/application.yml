@@ -1,0 +1,24 @@
+server:
+  port: 80
+
+spring:
+  application:
+    name: cloud-order-feign-service
+
+eureka:
+  client:
+    register-with-eureka: true #表示是否将自己注册到eureka注册中心
+    fetch-registry: true  #是否从Eureka抓取已有的注册信息，默认为true 单节点无所谓，但是集群必须要配置为true才能配置负载均衡策略
+    service-url:
+      defaultZone: http://localhost:7001/eureka
+  instance:
+    instance-id: orderFeign80
+    prefer-ip-address: true
+
+
+
+feign:
+  client:
+    default-config: 2000
+  httpclient:
+    connection-timeout: 5000
