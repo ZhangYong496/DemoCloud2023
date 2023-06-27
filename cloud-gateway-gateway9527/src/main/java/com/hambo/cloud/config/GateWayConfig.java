@@ -10,9 +10,10 @@ public class GateWayConfig {
 
     //使用编码方式增加路由转发配置
     @Bean
-    public RouteLocator routes(RouteLocatorBuilder routeLocatorBuilder) {
+    public RouteLocator myRouter(RouteLocatorBuilder routeLocatorBuilder) {
         return routeLocatorBuilder.routes()
-                .route("route1", r -> r.path("/game").uri("https://lol.qq.com/main.shtml"))
+                //path是uri的具体访问路径， uri是前缀
+                .route("route1", r -> r.path("/hot").uri("https://www.zhihu.com"))
                 .build();
     }
 
