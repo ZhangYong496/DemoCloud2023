@@ -15,8 +15,8 @@ public class MyGateWayFilter implements GlobalFilter, Ordered {
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
         log.info("**********in********");
-        boolean b = exchange.getRequest().getQueryParams().containsKey("aaa");
-        if (b){
+        boolean b = exchange.getRequest().getQueryParams().containsKey("aaa"); //只要url里面包含aaa就可以访问
+        if (!b){
             log.info("*******error*******");
             exchange.getResponse().setStatusCode(HttpStatus.NOT_ACCEPTABLE);
             return exchange.getResponse().setComplete();
